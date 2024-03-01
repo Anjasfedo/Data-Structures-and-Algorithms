@@ -13,6 +13,15 @@ public class SinglyLinkedList {
         }
     }
 
+    public static void printElements(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.data + "-->");
+            current = current.next;
+        }
+        System.out.print("null");
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -27,6 +36,7 @@ public class SinglyLinkedList {
         second.next = third;
         third.next = fourth;
 
-        System.out.println(fourth.data);
+        // Print Singly Linked List Elements
+        printElements(sll.head);
     }
 }

@@ -75,7 +75,6 @@ public class ArrayUtil {
     }
 
     public static int[] moveZeroToEnd(int[] arr) {
-        //     int[] arr = { 5, 0, 3, 6, 10, 0, 0, 2 };
         int j = 0;
 
         for (int i = 0; i < arr.length; i++) {
@@ -90,6 +89,17 @@ public class ArrayUtil {
             }
         }
 
+        return arr;
+    }
+
+    public static int[] resizeArray(int[] arr, int capacity) {
+        int[] temp = new int[capacity];
+
+        for (int i = 0; i < arr.length; i++) {
+            temp[i] = arr[i];
+        }
+
+        arr = temp;
         return arr;
     }
 
@@ -136,6 +146,12 @@ public class ArrayUtil {
 
         // System.out.println(findSecondMax(arr));
 
-        printArray(moveZeroToEnd(arr));
+        // printArray(moveZeroToEnd(arr));
+
+        printArray(arr);
+
+        arr = resizeArray(arr, 10);
+
+        printArray(arr);
     }
 }

@@ -41,28 +41,49 @@ public class SinglyLinkedList {
         head = newNode;
     }
 
+    public void InsertLast(int data) {
+        ListNode newNode = new ListNode(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        ListNode curListNode = head;
+        while (curListNode.next != null) {
+            curListNode = curListNode.next;
+        }
+
+        curListNode.next = newNode;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
-        sll.head = new ListNode(10);
+        // sll.head = new ListNode(10);
 
-        ListNode second = new ListNode(1);
-        ListNode third = new ListNode(8);
-        ListNode fourth = new ListNode(11);
+        // ListNode second = new ListNode(1);
+        // ListNode third = new ListNode(8);
+        // ListNode fourth = new ListNode(11);
 
-        // Connect pointer
-        sll.head.next = second;
-        second.next = third;
-        third.next = fourth;
+        // // Connect pointer
+        // sll.head.next = second;
+        // second.next = third;
+        // third.next = fourth;
 
-        sll.InsertFirst(15);
-
-        System.out.println(sll.head.next.next.data);
+        // sll.InsertFirst(15);
+        // sll.InsertFirst(17);
+        // sll.InsertFirst(2);
+        // sll.InsertFirst(5);
+        sll.InsertLast(5);
+        sll.InsertLast(5);
+        sll.InsertLast(5);
+        sll.InsertLast(5);
 
         // Print Singly Linked List Elements
         sll.printElements();
 
         // Find the Length
-        System.out.println(sll.FindLength());
+        // System.out.println(sll.FindLength());
     }
 }

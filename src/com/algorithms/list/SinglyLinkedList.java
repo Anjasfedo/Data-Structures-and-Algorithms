@@ -35,6 +35,12 @@ public class SinglyLinkedList {
         return count;
     }
 
+    public void InsertFirst(int data) {
+        ListNode newNode = new ListNode(data);
+        newNode.next = head;
+        head = newNode;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -48,6 +54,10 @@ public class SinglyLinkedList {
         sll.head.next = second;
         second.next = third;
         third.next = fourth;
+
+        sll.InsertFirst(15);
+
+        System.out.println(sll.head.next.next.data);
 
         // Print Singly Linked List Elements
         sll.printElements();

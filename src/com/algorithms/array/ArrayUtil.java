@@ -99,8 +99,21 @@ public class ArrayUtil {
             temp[i] = arr[i];
         }
 
-        arr = temp;
-        return arr;
+        return temp;
+    }
+
+    public static int findMissingNum(int[] arr) {
+        int n = arr.length + 1;
+
+        int sum = n * (n + 1) / 2;
+        int sumArr = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sumArr += arr[i];
+        }
+
+        int result = sum - sumArr;
+
+        return result;
     }
 
     public void arrayDemo() {
@@ -136,7 +149,7 @@ public class ArrayUtil {
 
         // arrayUtil.arrayDemo();
 
-        int[] arr = { 5, 0, 3, 6, 10, 0, 0, 2 };
+        int[] arr = { 1, 2, 3, 5, 6 };
 
         // reverseArray(arr, 0, arr.length - 1);
 
@@ -148,10 +161,12 @@ public class ArrayUtil {
 
         // printArray(moveZeroToEnd(arr));
 
-        printArray(arr);
+        // printArray(arr);
 
-        arr = resizeArray(arr, 10);
+        // arr = resizeArray(arr, 10);
 
-        printArray(arr);
+        // printArray(arr);
+
+        System.out.println(findMissingNum(arr));
     }
 }

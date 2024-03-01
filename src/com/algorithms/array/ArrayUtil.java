@@ -56,7 +56,22 @@ public class ArrayUtil {
         }
 
         return min;
+    }
 
+    public static int findSecondMax(int[] arr) {
+        int max = Integer.MIN_VALUE;
+        int secMax = Integer.MIN_VALUE;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
+                secMax = max;
+                max = arr[i];
+            } else if (arr[i] > secMax && arr[i] != max) {
+                secMax = arr[i];
+            }
+        }
+
+        return secMax;
     }
 
     public void arrayDemo() {
@@ -92,12 +107,14 @@ public class ArrayUtil {
 
         // arrayUtil.arrayDemo();
 
-        int[] arr = { 4, 5, 1, 2, 7, 6, 10, 3, 3 };
+        int[] arr = { 4, 5, 1, 2, 7, 6, 10, 3, 3 , 10, 11, 11};
 
         reverseArray(arr, 0, arr.length - 1);
 
         printArray(arr);
 
         System.out.println(findMin(arr));
+
+        System.out.println(findSecondMax(arr));
     }
 }

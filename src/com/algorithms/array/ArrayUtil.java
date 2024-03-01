@@ -31,15 +31,32 @@ public class ArrayUtil {
         return result;
     }
 
-    public static void reverseArray(int[] numbers, int start, int end) {
+    public static void reverseArray(int[] arr, int start, int end) {
         while (start < end) {
-            int temp = numbers[start];
-            numbers[start] = numbers[end];
-            numbers[end] = temp;
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
 
             start++;
             end--;
         }
+    }
+
+    public static int findMin(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+        
+        int min = arr[0];
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+
+        return min;
+
     }
 
     public void arrayDemo() {
@@ -75,10 +92,12 @@ public class ArrayUtil {
 
         // arrayUtil.arrayDemo();
 
-        int[] arr = { 4, 5, 1, 2, 7, 6, 10, 3, 3};
+        int[] arr = { 4, 5, 1, 2, 7, 6, 10, 3, 3 };
 
         reverseArray(arr, 0, arr.length - 1);
 
         printArray(arr);
+
+        System.out.println(findMin(arr));
     }
 }

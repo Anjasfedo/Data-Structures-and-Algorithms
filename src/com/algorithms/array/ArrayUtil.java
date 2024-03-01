@@ -104,16 +104,13 @@ public class ArrayUtil {
 
     public static int findMissingNum(int[] arr) {
         int n = arr.length + 1;
-
         int sum = n * (n + 1) / 2;
-        int sumArr = 0;
-        for (int i = 0; i < arr.length; i++) {
-            sumArr += arr[i];
+
+        for (int num : arr) {
+            sum -= num;
         }
 
-        int result = sum - sumArr;
-
-        return result;
+        return sum;
     }
 
     public void arrayDemo() {
@@ -149,7 +146,7 @@ public class ArrayUtil {
 
         // arrayUtil.arrayDemo();
 
-        int[] arr = { 1, 2, 3, 5, 6 };
+        int[] arr = { 1, 2, 3, 5 };
 
         // reverseArray(arr, 0, arr.length - 1);
 

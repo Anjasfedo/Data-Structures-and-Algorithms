@@ -13,13 +13,26 @@ public class SinglyLinkedList {
         }
     }
 
-    public static void printElements(ListNode head) {
+    public void printElements() {
         ListNode current = head;
         while (current != null) {
             System.out.print(current.data + "-->");
             current = current.next;
         }
         System.out.print("null");
+
+        System.out.println();
+    }
+
+    public int FindLength() {
+        int count = 0;
+        ListNode curListNode = head;
+
+        while (curListNode != null) {
+            count++;
+            curListNode = curListNode.next;
+        }
+        return count;
     }
 
     public static void main(String[] args) {
@@ -37,6 +50,9 @@ public class SinglyLinkedList {
         third.next = fourth;
 
         // Print Singly Linked List Elements
-        printElements(sll.head);
+        sll.printElements();
+
+        // Find the Length
+        System.out.println(sll.FindLength());
     }
 }

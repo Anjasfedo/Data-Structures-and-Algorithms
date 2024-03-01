@@ -113,6 +113,23 @@ public class ArrayUtil {
         return sum;
     }
 
+    public static boolean isPalindrome(String words) {
+        char[] charArr = words.toCharArray();
+        int start = 0;
+        int end = words.length() - 1;
+
+        while (start < end) {
+            if (charArr[start] != charArr[end]) {
+                return false;
+            }
+            
+            start++;
+            end--;
+        }
+
+        return true;
+    }
+
     public void arrayDemo() {
         // int[] myArray = new int[5]; // Initalize Array (will init with 0)
 
@@ -146,7 +163,7 @@ public class ArrayUtil {
 
         // arrayUtil.arrayDemo();
 
-        int[] arr = { 1, 2, 3, 5 };
+        int[] arr = { 2, 4, 1, 8, 6, 3, 7 };
 
         // reverseArray(arr, 0, arr.length - 1);
 
@@ -164,6 +181,11 @@ public class ArrayUtil {
 
         // printArray(arr);
 
-        System.out.println(findMissingNum(arr));
+        // System.out.println(findMissingNum(arr));
+
+        String words = "anjna";
+
+        System.out.println(isPalindrome(words));
+
     }
 }

@@ -2,7 +2,7 @@ package com.algorithms.array;
 
 public class ArrayUtil {
 
-    public void printArray(int[] arr) {
+    public static void printArray(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n; i++) {
             System.out.print(arr[i] + " ");
@@ -29,6 +29,88 @@ public class ArrayUtil {
         }
 
         return result;
+    }
+
+    public static void reverseArray(int[] arr, int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+
+            start++;
+            end--;
+        }
+    }
+
+    public static int findMin(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+
+        int min = arr[0];
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+
+        return min;
+    }
+
+    public static int findSecondMax(int[] arr) {
+        int max = Integer.MIN_VALUE;
+        int secMax = Integer.MIN_VALUE;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
+                secMax = max;
+                max = arr[i];
+            } else if (arr[i] > secMax && arr[i] != max) {
+                secMax = arr[i];
+            }
+        }
+
+        return secMax;
+    }
+
+    public static int[] moveZeroToEnd(int[] arr) {
+        int j = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0 && arr[j] == 0) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+
+            if (arr[j] != 0) {
+                j++;
+            }
+        }
+
+        return arr;
+    }
+
+    public static int[] resizeArray(int[] arr, int capacity) {
+        int[] temp = new int[capacity];
+
+        for (int i = 0; i < arr.length; i++) {
+            temp[i] = arr[i];
+        }
+
+        return temp;
+    }
+
+    public static int findMissingNum(int[] arr) {
+        int n = arr.length + 1;
+        int sum = n * (n + 1) / 2;
+
+        for (int num : arr) {
+            sum -= num;
+        }
+
+        return sum;
     }
 
     public void arrayDemo() {
@@ -60,8 +142,28 @@ public class ArrayUtil {
     }
 
     public static void main(String[] args) {
-        ArrayUtil arrayUtil = new ArrayUtil();
+        // ArrayUtil arrayUtil = new ArrayUtil();
 
-        arrayUtil.arrayDemo();
+        // arrayUtil.arrayDemo();
+
+        int[] arr = { 2, 4, 1, 8, 6, 3, 7 };
+
+        // reverseArray(arr, 0, arr.length - 1);
+
+        // printArray(arr);
+
+        // System.out.println(findMin(arr));
+
+        // System.out.println(findSecondMax(arr));
+
+        // printArray(moveZeroToEnd(arr));
+
+        // printArray(arr);
+
+        // arr = resizeArray(arr, 10);
+
+        // printArray(arr);
+
+        System.out.println(findMissingNum(arr));
     }
 }

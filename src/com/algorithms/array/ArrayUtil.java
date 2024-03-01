@@ -46,7 +46,7 @@ public class ArrayUtil {
         if (arr == null || arr.length == 0) {
             throw new IllegalArgumentException("Invalid input");
         }
-        
+
         int min = arr[0];
 
         for (int i = 0; i < arr.length; i++) {
@@ -72,6 +72,25 @@ public class ArrayUtil {
         }
 
         return secMax;
+    }
+
+    public static int[] moveZeroToEnd(int[] arr) {
+        //     int[] arr = { 5, 0, 3, 6, 10, 0, 0, 2 };
+        int j = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0 && arr[j] == 0) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+
+            if (arr[j] != 0) {
+                j++;
+            }
+        }
+
+        return arr;
     }
 
     public void arrayDemo() {
@@ -107,14 +126,16 @@ public class ArrayUtil {
 
         // arrayUtil.arrayDemo();
 
-        int[] arr = { 4, 5, 1, 2, 7, 6, 10, 3, 3 , 10, 11, 11};
+        int[] arr = { 5, 0, 3, 6, 10, 0, 0, 2 };
 
-        reverseArray(arr, 0, arr.length - 1);
+        // reverseArray(arr, 0, arr.length - 1);
 
-        printArray(arr);
+        // printArray(arr);
 
-        System.out.println(findMin(arr));
+        // System.out.println(findMin(arr));
 
-        System.out.println(findSecondMax(arr));
+        // System.out.println(findSecondMax(arr));
+
+        printArray(moveZeroToEnd(arr));
     }
 }

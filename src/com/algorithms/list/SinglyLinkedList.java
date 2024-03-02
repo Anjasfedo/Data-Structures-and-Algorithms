@@ -120,6 +120,22 @@ public class SinglyLinkedList {
 
         ListNode curNode = prevNode.next;
         prevNode.next = curNode.next;
+
+        curNode.next = null;
+    }
+
+    public boolean searchElement(int searchKey) {
+        ListNode curNode = head;
+
+        while (curNode != null) {
+            if (curNode.data == searchKey) {
+                return true;
+            }
+
+            curNode = curNode.next;
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {
@@ -157,6 +173,9 @@ public class SinglyLinkedList {
         sll.deleteLast();
 
         sll.deletePosition(2);
+
+        System.out.println(sll.searchElement(3));
+        System.out.println(sll.searchElement(2));
 
         // Print Singly Linked List Elements
         sll.printElements();

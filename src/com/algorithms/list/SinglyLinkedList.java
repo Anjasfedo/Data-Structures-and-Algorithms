@@ -88,6 +88,23 @@ public class SinglyLinkedList {
         return tempNode;
     }
 
+    public ListNode deleteLast() {
+        if (head == null || head.next == null) {
+            return null;
+        }
+
+        ListNode curNode = head;
+        ListNode prevNode = null;
+
+        while (curNode.next != null) {
+            prevNode = curNode;
+            curNode = curNode.next;
+        }
+
+        prevNode.next = null;
+        return curNode;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -119,6 +136,8 @@ public class SinglyLinkedList {
         // sll.InsertPosition(7, 2);
         
         sll.deleteFirst();
+
+        sll.deleteLast();
 
         // Print Singly Linked List Elements
         sll.printElements();

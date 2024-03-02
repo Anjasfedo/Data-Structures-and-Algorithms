@@ -318,6 +318,30 @@ public class SinglyLinkedList {
         slowPtr.next = null;
     }
 
+    public ListNode merge(ListNode a, ListNode b) {
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+
+        while (a != null && b != null) {
+            if (a.data <= b.data) {
+                tail.next = a;
+                a = a.next;
+            } else {
+                tail.next = b;
+                b = b.next;
+            }
+            tail = tail.next;
+        }
+
+        if (a == null) {
+            tail.next = b;
+        } else {
+            tail.next = a;
+        }
+
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -340,14 +364,14 @@ public class SinglyLinkedList {
         // sll.InsertFirst(2);
         // sll.InsertFirst(5);
 
-        sll.InsertLast(1);
-        sll.InsertLast(1);
-        sll.InsertLast(2);
-        sll.InsertLast(3);
-        sll.InsertLast(5);
-        sll.InsertLast(8);
-        sll.InsertLast(9);
-        sll.InsertLast(11);
+        // sll.InsertLast(1);
+        // sll.InsertLast(1);
+        // sll.InsertLast(2);
+        // sll.InsertLast(3);
+        // sll.InsertLast(5);
+        // sll.InsertLast(8);
+        // sll.InsertLast(9);
+        // sll.InsertLast(11);
 
         // sll.InsertPosition(5, 1);
         // sll.InsertPosition(4, 2);
@@ -371,24 +395,24 @@ public class SinglyLinkedList {
 
         // sll.head = sll.reverseList();
 
-        sll.removeDupeSorted();
+        // sll.removeDupeSorted();
 
-        sll.insertSorted(7);
+        // sll.insertSorted(7);
 
-        // sll.printElements();
+        // // sll.printElements();
 
-        sll.deleteByKey(1);
-        sll.deleteByKey(7);
+        // sll.deleteByKey(1);
+        // sll.deleteByKey(7);
 
         // System.out.println(sll.detectLoop());
 
-        sll.head = sll.createLoopLinkedList();
+        // sll.head = sll.createLoopLinkedList();
 
-        System.out.println(sll.detectLoop());
-        sll.removeTheLoop();;
-        System.out.println(sll.detectLoop());
+        // System.out.println(sll.detectLoop());
+        // sll.removeTheLoop();;
+        // System.out.println(sll.detectLoop());
 
-        sll.printElements();
+        // sll.printElements();
 
         // System.out.println(sll.findLoopStart());
 
@@ -398,5 +422,26 @@ public class SinglyLinkedList {
 
         // System.out.println(sll.findNthFromEnd(4).data);
 
+        ListNode head1 = new ListNode(0);
+        ListNode second1 = new ListNode(2);
+        ListNode third1 = new ListNode(8);
+        ListNode fourth1 = new ListNode(11);
+
+        head1.next = second1;
+        second1.next = third1;
+        third1.next = fourth1;
+
+        ListNode head2 = new ListNode(1);
+        ListNode second2 = new ListNode(3);
+        ListNode third2 = new ListNode(9);
+        ListNode fourth2 = new ListNode(15);
+
+        head2.next = second2;
+        second2.next = third2;
+        third2.next = fourth2;
+
+        sll.head = sll.merge(head1, head2);
+
+        sll.printElements();
     }
 }

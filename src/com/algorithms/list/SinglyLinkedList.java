@@ -26,11 +26,11 @@ public class SinglyLinkedList {
 
     public int FindLength() {
         int count = 0;
-        ListNode curListNode = head;
+        ListNode curNode = head;
 
-        while (curListNode != null) {
+        while (curNode != null) {
             count++;
-            curListNode = curListNode.next;
+            curNode = curNode.next;
         }
         return count;
     }
@@ -49,12 +49,33 @@ public class SinglyLinkedList {
             return;
         }
 
-        ListNode curListNode = head;
-        while (curListNode.next != null) {
-            curListNode = curListNode.next;
+        ListNode curNode = head;
+        while (curNode.next != null) {
+            curNode = curNode.next;
         }
 
-        curListNode.next = newNode;
+        curNode.next = newNode;
+    }
+
+    public void InsertPosition(int data, int position) {
+        ListNode newNode = new ListNode(data);
+
+        if (position == 1) {
+            newNode.next = head;
+            head = newNode;
+        } else {
+            ListNode prevNode = head;
+            int count = 1;
+
+            while (count < position - 1) {
+                prevNode = prevNode.next;
+                count++;
+            }
+
+            ListNode curNode = prevNode.next;
+            newNode.next = curNode;
+            prevNode.next = newNode;
+        }
     }
 
     public static void main(String[] args) {
@@ -75,11 +96,17 @@ public class SinglyLinkedList {
         // sll.InsertFirst(17);
         // sll.InsertFirst(2);
         // sll.InsertFirst(5);
-        sll.InsertLast(5);
-        sll.InsertLast(5);
-        sll.InsertLast(5);
-        sll.InsertLast(5);
+        // sll.InsertLast(5);
+        // sll.InsertLast(5);
+        // sll.InsertLast(5);
+        // sll.InsertLast(5);
 
+        sll.InsertPosition(5, 1);
+        sll.InsertPosition(7, 2);
+        sll.InsertPosition(7, 2);
+        sll.InsertPosition(7, 2);
+        sll.InsertPosition(7, 2);
+        
         // Print Singly Linked List Elements
         sll.printElements();
 

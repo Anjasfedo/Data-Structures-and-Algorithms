@@ -230,22 +230,6 @@ public class SinglyLinkedList {
         tempNode.next = curNode.next;
     }
 
-    public boolean detectLoop() {
-        ListNode fastPtr = head;
-        ListNode slowPtr = head;
-
-        while (fastPtr != null && fastPtr.next != null) {
-            fastPtr = fastPtr.next.next;
-            slowPtr = slowPtr.next;
-
-            if (slowPtr == fastPtr) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     public ListNode createLoopLinkedList() {
         ListNode first = new ListNode(1);
         ListNode second = new ListNode(2);
@@ -263,6 +247,49 @@ public class SinglyLinkedList {
         sixth.next = third;
 
         return head;
+    }
+
+    public boolean detectLoop() {
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+
+        while (fastPtr != null && fastPtr.next != null) {
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+
+            if (slowPtr == fastPtr) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public ListNode findLoopStart() {
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+
+        while (fastPtr != null && fastPtr.next != null) {
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+
+            if (slowPtr == fastPtr) {
+                return getStartingNode(slowPtr);
+            }
+        }
+
+        return null;
+    }
+
+    public ListNode getStartingNode(ListNode slowPtr) {
+        ListNode tempNode = head;
+
+        while (slowPtr != tempNode) {
+            tempNode = tempNode.next;
+            slowPtr = slowPtr.next;
+        }
+
+        return tempNode;
     }
 
     public static void main(String[] args) {
@@ -333,9 +360,10 @@ public class SinglyLinkedList {
 
         System.out.println(sll.detectLoop());
 
-        
-        
+        System.out.println(sll.findLoopStart().data);
+
         // Print Singly Linked List Elements
+
         // sll.printElements();
 
         // System.out.println(sll.findNthFromEnd(4).data);

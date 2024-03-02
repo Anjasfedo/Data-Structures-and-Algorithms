@@ -195,7 +195,9 @@ public class SinglyLinkedList {
         }
     }
 
-    public void insertSorted (ListNode newNode) {
+    public void insertSorted (int data) {
+        ListNode newNode = new ListNode(data);
+
         ListNode curNode = head;
         ListNode tempNode = null;
 
@@ -206,6 +208,20 @@ public class SinglyLinkedList {
 
         newNode.next = curNode;
         tempNode.next = newNode;
+    }
+
+    public void deleteByKey(int key) {
+        ListNode curNode = head;
+        ListNode tempNode = null;
+
+        while (curNode != null && curNode.data != key) {
+            tempNode = curNode;
+            curNode = curNode.next;
+        }
+
+        if (curNode == null) return;
+        
+        tempNode.next = curNode.next;
     }
 
     public static void main(String[] args) {
@@ -263,9 +279,11 @@ public class SinglyLinkedList {
 
         sll.removeDupeSorted();
 
-        ListNode newNode = new ListNode(7);
+        sll.insertSorted(7);
 
-        sll.insertSorted(newNode);
+        sll.printElements();
+
+        sll.deleteByKey(5);
 
         // Print Singly Linked List Elements
         sll.printElements();

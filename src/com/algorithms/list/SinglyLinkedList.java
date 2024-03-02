@@ -246,6 +246,25 @@ public class SinglyLinkedList {
         return false;
     }
 
+    public ListNode createLoopLinkedList() {
+        ListNode first = new ListNode(1);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(3);
+        ListNode fourth = new ListNode(4);
+        ListNode fifth = new ListNode(5);
+        ListNode sixth = new ListNode(6);
+
+        head = first;
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+        sixth.next = third;
+
+        return head;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -303,15 +322,21 @@ public class SinglyLinkedList {
 
         sll.insertSorted(7);
 
-        sll.printElements();
+        // sll.printElements();
 
         sll.deleteByKey(1);
         sll.deleteByKey(7);
 
+        // System.out.println(sll.detectLoop());
+
+        sll.head = sll.createLoopLinkedList();
+
         System.out.println(sll.detectLoop());
 
+        
+        
         // Print Singly Linked List Elements
-        sll.printElements();
+        // sll.printElements();
 
         // System.out.println(sll.findNthFromEnd(4).data);
 

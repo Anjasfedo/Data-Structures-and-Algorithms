@@ -342,6 +342,38 @@ public class SinglyLinkedList {
         return dummy.next;
     }
 
+    public ListNode addTwo(ListNode a, ListNode b) {
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+        int carry = 0;
+
+        while (a != null || b != null) {
+            int x = (a != null) ? a.data : 0;
+            int y = (b != null) ? b.data : 0;
+
+            int sum = carry + x + y;
+
+            carry = sum / 10;
+
+            tail.next = new ListNode(sum % 10);
+            tail = tail.next;
+
+            if (a != null) {
+                a = a.next;
+            }
+            
+            if (b != null) {
+                b = b.next;
+            }
+        }
+
+        if (carry > 0) {
+            tail.next = new ListNode(carry);
+        }
+
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -422,25 +454,31 @@ public class SinglyLinkedList {
 
         // System.out.println(sll.findNthFromEnd(4).data);
 
-        ListNode head1 = new ListNode(0);
-        ListNode second1 = new ListNode(2);
-        ListNode third1 = new ListNode(8);
-        ListNode fourth1 = new ListNode(11);
+        ListNode head1 = new ListNode(3);
+        ListNode second1 = new ListNode(4);
+        ListNode third1 = new ListNode(3);
+        // ListNode fourth1 = new ListNode(4);
 
         head1.next = second1;
         second1.next = third1;
-        third1.next = fourth1;
+        // third1.next = fourth1;
 
-        ListNode head2 = new ListNode(1);
-        ListNode second2 = new ListNode(3);
-        ListNode third2 = new ListNode(9);
-        ListNode fourth2 = new ListNode(15);
+        ListNode head2 = new ListNode(5);
+        ListNode second2 = new ListNode(6);
+        ListNode third2 = new ListNode(4);
+        // ListNode fourth2 = new ListNode(5);
 
         head2.next = second2;
         second2.next = third2;
-        third2.next = fourth2;
+        // third2.next = fourth2;
 
-        sll.head = sll.merge(head1, head2);
+        sll.head = head1;
+        sll.printElements();
+
+        sll.head = head2;
+        sll.printElements();
+
+        sll.head = sll.addTwo(head1, head2);
 
         sll.printElements();
     }

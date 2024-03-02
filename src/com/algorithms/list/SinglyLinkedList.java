@@ -195,7 +195,7 @@ public class SinglyLinkedList {
         }
     }
 
-    public void insertSorted (int data) {
+    public void insertSorted(int data) {
         ListNode newNode = new ListNode(data);
 
         ListNode curNode = head;
@@ -214,14 +214,36 @@ public class SinglyLinkedList {
         ListNode curNode = head;
         ListNode tempNode = null;
 
+        if (curNode != null && curNode.data == key) {
+            head = curNode.next;
+            return;
+        }
+
         while (curNode != null && curNode.data != key) {
             tempNode = curNode;
             curNode = curNode.next;
         }
 
-        if (curNode == null) return;
-        
+        if (curNode == null)
+            return;
+
         tempNode.next = curNode.next;
+    }
+
+    public boolean detectLoop() {
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+
+        while (fastPtr != null && fastPtr.next != null) {
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+
+            if (slowPtr == fastPtr) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {
@@ -283,7 +305,10 @@ public class SinglyLinkedList {
 
         sll.printElements();
 
-        sll.deleteByKey(5);
+        sll.deleteByKey(1);
+        sll.deleteByKey(7);
+
+        System.out.println(sll.detectLoop());
 
         // Print Singly Linked List Elements
         sll.printElements();

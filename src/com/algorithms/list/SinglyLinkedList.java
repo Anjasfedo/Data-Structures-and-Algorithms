@@ -13,7 +13,7 @@ public class SinglyLinkedList {
         }
     }
 
-    public void printElements() {
+    public void printElements(ListNode head) {
         ListNode current = head;
         while (current != null) {
             System.out.print(current.data + "-->");
@@ -138,6 +138,21 @@ public class SinglyLinkedList {
         return false;
     }
 
+    public ListNode reverseList(ListNode head) {
+        ListNode curNode = head;
+        ListNode prevNode = null;
+        ListNode nextNode = null;
+
+        while (curNode != null) {
+            nextNode = curNode.next;
+            curNode.next = prevNode;
+            prevNode = curNode;
+            curNode = nextNode;
+        }
+
+        return prevNode;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -166,7 +181,9 @@ public class SinglyLinkedList {
         sll.InsertPosition(8, 3);
         sll.InsertPosition(3, 4);
         sll.InsertPosition(9, 5);
-        // sll.InsertPosition(7, 2);
+        sll.InsertPosition(7, 2);
+        sll.InsertPosition(7, 2);
+        sll.InsertPosition(7, 2);
         
         sll.deleteFirst();
 
@@ -174,11 +191,15 @@ public class SinglyLinkedList {
 
         sll.deletePosition(2);
 
-        System.out.println(sll.searchElement(3));
-        System.out.println(sll.searchElement(2));
+        // System.out.println(sll.searchElement(3));
+        // System.out.println(sll.searchElement(2));
+
+        sll.printElements(sll.head);
+
+        ListNode reversedNode = sll.reverseList(sll.head);
 
         // Print Singly Linked List Elements
-        sll.printElements();
+        sll.printElements(reversedNode);
 
         // Find the Length
         // System.out.println(sll.FindLength());

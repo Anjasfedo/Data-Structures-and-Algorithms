@@ -78,6 +78,16 @@ public class SinglyLinkedList {
         }
     }
 
+    public ListNode deleteFirst() {
+        if (head == null) {
+            return null;
+        }
+        ListNode tempNode = head;
+        head = head.next;
+        tempNode.next = null;
+        return tempNode;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -103,10 +113,13 @@ public class SinglyLinkedList {
 
         sll.InsertPosition(5, 1);
         sll.InsertPosition(7, 2);
-        sll.InsertPosition(7, 2);
-        sll.InsertPosition(7, 2);
-        sll.InsertPosition(7, 2);
+        sll.InsertPosition(8, 3);
+        // sll.InsertPosition(7, 2);
+        // sll.InsertPosition(7, 2);
+        // sll.InsertPosition(7, 2);
         
+        sll.deleteFirst();
+
         // Print Singly Linked List Elements
         sll.printElements();
 

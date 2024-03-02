@@ -189,11 +189,23 @@ public class SinglyLinkedList {
         while (curNode != null && curNode.next != null) {
             if (curNode.data == curNode.next.data) {
                 curNode.next = curNode.next.next;
-            } else {
-                curNode = curNode.next;
             }
 
+            curNode = curNode.next;
         }
+    }
+
+    public void insertSorted (ListNode newNode) {
+        ListNode curNode = head;
+        ListNode tempNode = null;
+
+        while (curNode != null && curNode.data < newNode.data) {
+            tempNode = curNode;
+            curNode = curNode.next;
+        }
+
+        newNode.next = curNode;
+        tempNode.next = newNode;
     }
 
     public static void main(String[] args) {
@@ -222,7 +234,10 @@ public class SinglyLinkedList {
         sll.InsertLast(1);
         sll.InsertLast(2);
         sll.InsertLast(3);
-        sll.InsertLast(3);
+        sll.InsertLast(5);
+        sll.InsertLast(8);
+        sll.InsertLast(9);
+        sll.InsertLast(11);
 
         // sll.InsertPosition(5, 1);
         // sll.InsertPosition(4, 2);
@@ -246,7 +261,11 @@ public class SinglyLinkedList {
 
         // sll.head = sll.reverseList();
 
-        sll.removeDupeFromSorted();
+        sll.removeDupeSorted();
+
+        ListNode newNode = new ListNode(7);
+
+        sll.insertSorted(newNode);
 
         // Print Singly Linked List Elements
         sll.printElements();

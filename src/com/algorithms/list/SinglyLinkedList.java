@@ -167,6 +167,10 @@ public class SinglyLinkedList {
         int count = 0;
 
         while (count < n) {
+            if (refPtr == null) {
+                throw new IllegalArgumentException(n + " is greater than nodes length");
+            }
+
             refPtr = refPtr.next;
             count++;
         }
@@ -177,6 +181,19 @@ public class SinglyLinkedList {
         }
 
         return mainPtr;
+    }
+
+    public void removeDupeSorted() {
+        ListNode curNode = head;
+
+        while (curNode != null && curNode.next != null) {
+            if (curNode.data == curNode.next.data) {
+                curNode.next = curNode.next.next;
+            } else {
+                curNode = curNode.next;
+            }
+
+        }
     }
 
     public static void main(String[] args) {
@@ -193,43 +210,48 @@ public class SinglyLinkedList {
         // second.next = third;
         // third.next = fourth;
 
+        // Find the Length
+        // System.out.println(sll.FindLength());
+
         // sll.InsertFirst(15);
         // sll.InsertFirst(17);
         // sll.InsertFirst(2);
         // sll.InsertFirst(5);
-        // sll.InsertLast(5);
-        // sll.InsertLast(5);
-        // sll.InsertLast(5);
-        // sll.InsertLast(5);
 
-        sll.InsertPosition(5, 1);
-        sll.InsertPosition(4, 2);
-        sll.InsertPosition(8, 3);
-        sll.InsertPosition(3, 4);
-        sll.InsertPosition(9, 5);
-        sll.InsertPosition(7, 2);
-        sll.InsertPosition(7, 2);
-        sll.InsertPosition(7, 2);
+        sll.InsertLast(1);
+        sll.InsertLast(1);
+        sll.InsertLast(2);
+        sll.InsertLast(3);
+        sll.InsertLast(3);
 
-        sll.deleteFirst();
+        // sll.InsertPosition(5, 1);
+        // sll.InsertPosition(4, 2);
+        // sll.InsertPosition(8, 3);
+        // sll.InsertPosition(3, 4);
+        // sll.InsertPosition(9, 5);
+        // sll.InsertPosition(7, 2);
+        // sll.InsertPosition(7, 2);
+        // sll.InsertPosition(7, 2);
 
-        sll.deleteLast();
+        // sll.deleteFirst();
 
-        sll.deletePosition(2);
+        // sll.deleteLast();
+
+        // sll.deletePosition(2);
 
         // System.out.println(sll.searchElement(3));
         // System.out.println(sll.searchElement(2));
 
-        sll.printElements();
+        // sll.printElements();
 
-        sll.head = sll.reverseList();
+        // sll.head = sll.reverseList();
+
+        sll.removeDupeFromSorted();
 
         // Print Singly Linked List Elements
         sll.printElements();
 
-        System.out.println(sll.findNthFromEnd(4).data);
+        // System.out.println(sll.findNthFromEnd(4).data);
 
-        // Find the Length
-        // System.out.println(sll.FindLength());
     }
 }

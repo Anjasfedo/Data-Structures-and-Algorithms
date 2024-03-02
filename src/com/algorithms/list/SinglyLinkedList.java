@@ -13,7 +13,7 @@ public class SinglyLinkedList {
         }
     }
 
-    public void printElements(ListNode head) {
+    public void printElements() {
         ListNode current = head;
         while (current != null) {
             System.out.print(current.data + "-->");
@@ -138,7 +138,7 @@ public class SinglyLinkedList {
         return false;
     }
 
-    public ListNode reverseList(ListNode head) {
+    public ListNode reverseList() {
         ListNode curNode = head;
         ListNode prevNode = null;
         ListNode nextNode = null;
@@ -151,6 +151,32 @@ public class SinglyLinkedList {
         }
 
         return prevNode;
+    }
+
+    public ListNode findNthFromEnd(int n) {
+        if (head == null) {
+            return null;
+        }
+
+        if (n <= 0) {
+            throw new IllegalStateException("Invalid input n: " + n);
+        }
+
+        ListNode mainPtr = head;
+        ListNode refPtr = head;
+        int count = 0;
+
+        while (count < n) {
+            refPtr = refPtr.next;
+            count++;
+        }
+
+        while (refPtr != null) {
+            refPtr = refPtr.next;
+            mainPtr = mainPtr.next;
+        }
+
+        return mainPtr;
     }
 
     public static void main(String[] args) {
@@ -184,7 +210,7 @@ public class SinglyLinkedList {
         sll.InsertPosition(7, 2);
         sll.InsertPosition(7, 2);
         sll.InsertPosition(7, 2);
-        
+
         sll.deleteFirst();
 
         sll.deleteLast();
@@ -194,12 +220,14 @@ public class SinglyLinkedList {
         // System.out.println(sll.searchElement(3));
         // System.out.println(sll.searchElement(2));
 
-        sll.printElements(sll.head);
+        sll.printElements();
 
-        ListNode reversedNode = sll.reverseList(sll.head);
+        sll.head = sll.reverseList();
 
         // Print Singly Linked List Elements
-        sll.printElements(reversedNode);
+        sll.printElements();
+
+        System.out.println(sll.findNthFromEnd(4).data);
 
         // Find the Length
         // System.out.println(sll.FindLength());

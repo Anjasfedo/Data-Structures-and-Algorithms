@@ -45,7 +45,7 @@ public class CircularSinglyLinkedList {
     }
 
     public void printElements() {
-        if (last == null) {
+        if (isEmpty()) {
             return;
         }
 
@@ -62,7 +62,7 @@ public class CircularSinglyLinkedList {
     public void insertFirst(int data) {
         ListNode newNode = new ListNode(data);
 
-        if (last == null) {
+        if (isEmpty()) {
             last = newNode;
         } else {
             newNode.next = last.next;
@@ -72,12 +72,30 @@ public class CircularSinglyLinkedList {
         length++;
     }
 
+    public void insertLast(int data) {
+        ListNode newNode = new ListNode(data);
+
+        if (isEmpty()) {
+            last = newNode;
+        } else {
+            newNode.next = last.next;
+        }
+
+        last.next = newNode;
+        last = newNode;
+        length++;
+    }
+
     public static void main(String[] args) {
         CircularSinglyLinkedList csll = new CircularSinglyLinkedList();
 
         csll.last = csll.createCircularLinkedList();
 
         csll.insertFirst(10);
+
+        csll.insertLast(11);
+        csll.insertLast(17);
+
         csll.printElements();
     }
 }

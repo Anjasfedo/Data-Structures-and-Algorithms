@@ -32,7 +32,61 @@ public class DoublyLinkedList {
         return length;
     }
 
-    public static void main(String[] args) {
+    public void printForward() {
+        if (isEmpty()) {
+            return;
+        }
 
+        ListNode temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + "-->");
+            temp = temp.next;
+        }
+
+        System.out.print("null");
+        System.out.println();
+    }
+
+    public void printBackward() {
+        if (isEmpty()) {
+            return;
+        }
+
+        ListNode temp = tail;
+
+        while (temp != null) {
+            System.out.print(temp.data + "-->");
+            temp = temp.prev;
+        }
+
+        System.out.print("null");
+        System.out.println();
+    }
+
+    public void insertLast(int data) {
+        ListNode newNode = new ListNode(data);
+
+        if (isEmpty()) {
+            head = newNode;
+        } else {
+            tail.next = newNode;
+        }
+
+        newNode.prev = tail;
+        tail = newNode;
+        length++;
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList dll = new DoublyLinkedList();
+
+        dll.insertLast(1);
+        dll.insertLast(2);
+        dll.insertLast(5);
+        dll.insertLast(7);
+
+        dll.printForward();
+        dll.printBackward();
     }
 }

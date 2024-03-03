@@ -75,6 +75,30 @@ public class ReverseStringStack {
         return result;
     }
 
+    public static boolean isValidParentheses(String strings) {
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : strings.toCharArray()) {
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            } else {
+                if (stack.isEmpty()) {
+                    return false;
+                } else {
+                    char top = stack.peek();
+
+                    if ((c == ')' && top == '(') || (c == '}' && top == '{') || (c == ']' && top == '[')) {
+                        stack.pop();
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return stack.isEmpty();
+    }
+
     public static void main(String[] args) {
         // String name = "anjas";
 
@@ -84,13 +108,22 @@ public class ReverseStringStack {
 
         // System.out.println(name);
 
-        int[] arr = { 4, 7, 3, 4, 8, 1 };
+        // int[] arr = { 4, 7, 3, 4, 8, 1 };
 
-        System.out.println(Arrays.toString(arr));
+        // System.out.println(Arrays.toString(arr));
 
-        arr = nextGreaterElement(arr);
+        // arr = nextGreaterElement(arr);
 
-        System.out.println(Arrays.toString(arr));
+        // System.out.println(Arrays.toString(arr));
 
+        String strings = "{()}";
+
+        System.out.println(isValidParentheses(strings));
+        System.out.println(strings);
+
+        strings = reverseString(strings);
+        
+        System.out.println(isValidParentheses(strings));
+        System.out.println(strings);
     }
 }

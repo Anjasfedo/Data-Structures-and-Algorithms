@@ -21,13 +21,12 @@ public class ReverseStringStack {
         return new String(chars);
     }
 
-    public static int[] nextGreater(int[] arr) {
+    public static int[] nextGreaterReverse(int[] arr) {
         Stack<Integer> stack = new Stack<>();
 
         int check = 0;
 
         while (check < arr.length) {
-            // System.out.println(check);
             for (int i = check + 1; i < arr.length + 1; i++) {
                 if (i == arr.length) {
                     stack.push(-1);
@@ -46,9 +45,33 @@ public class ReverseStringStack {
         int[] result = new int[arr.length];
 
         for (int i = 0; i < arr.length; i++) {
-        result[i] = stack.pop();
+            result[i] = stack.pop();
         }
-        
+
+        return result;
+    }
+
+    public static int[] nextGreaterElement(int[] arr) {
+        int[] result = new int[arr.length];
+
+        Stack<Integer> stack = new Stack<>();
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (!stack.isEmpty()) {
+                while (!stack.isEmpty() && stack.peek() <= arr[i]) {
+                    stack.pop();
+                }
+            }
+
+            if (stack.isEmpty()) {
+                result[i] = -1;
+            } else {
+                result[i] = stack.peek();
+            }
+
+            stack.push(arr[i]);
+        }
+
         return result;
     }
 
@@ -65,7 +88,7 @@ public class ReverseStringStack {
 
         System.out.println(Arrays.toString(arr));
 
-        arr = nextGreater(arr);
+        arr = nextGreaterElement(arr);
 
         System.out.println(Arrays.toString(arr));
 

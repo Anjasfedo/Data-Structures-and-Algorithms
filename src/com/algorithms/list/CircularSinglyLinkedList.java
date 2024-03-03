@@ -39,6 +39,8 @@ public class CircularSinglyLinkedList {
         third.next = fourth;
         fourth.next = first;
 
+        length += 4;
+
         return first;
     }
 
@@ -57,11 +59,25 @@ public class CircularSinglyLinkedList {
         System.out.print(first.data + " ");
     }
 
+    public void insertFirst(int data) {
+        ListNode newNode = new ListNode(data);
+
+        if (last == null) {
+            last = newNode;
+        } else {
+            newNode.next = last.next;
+        }
+
+        last.next = newNode;
+        length++;
+    }
+
     public static void main(String[] args) {
         CircularSinglyLinkedList csll = new CircularSinglyLinkedList();
 
         csll.last = csll.createCircularLinkedList();
 
+        csll.insertFirst(10);
         csll.printElements();
     }
 }

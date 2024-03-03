@@ -42,9 +42,26 @@ public class CircularSinglyLinkedList {
         return first;
     }
 
+    public void printElements() {
+        if (last == null) {
+            return;
+        }
+
+        ListNode first = last.next;
+
+        while (first != last) {
+            System.out.print(first.data + " ");
+            first = first.next;
+        }
+
+        System.out.print(first.data + " ");
+    }
+
     public static void main(String[] args) {
         CircularSinglyLinkedList csll = new CircularSinglyLinkedList();
 
         csll.last = csll.createCircularLinkedList();
+
+        csll.printElements();
     }
 }

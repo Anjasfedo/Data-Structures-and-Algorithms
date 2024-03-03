@@ -112,6 +112,25 @@ public class DoublyLinkedList {
 
         return temp;
     }
+    
+    public ListNode deleteLast() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
+        ListNode temp = tail;
+
+        if (head == tail) {
+            head = null;
+        } else {
+            tail.prev.next = null;
+        }
+
+        tail = tail.prev;
+        temp.prev = null;
+
+        return temp;
+    }
 
     public static void main(String[] args) {
         DoublyLinkedList dll = new DoublyLinkedList();
@@ -124,7 +143,7 @@ public class DoublyLinkedList {
         dll.insertFirst(10);
 
         System.out.println(dll.deleteFirst().data);
-        System.out.println(dll.deleteFirst().data);
+        System.out.println(dll.deleteLast().data);
 
         dll.printForward();
         dll.printBackward();

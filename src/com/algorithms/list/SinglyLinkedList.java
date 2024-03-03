@@ -353,9 +353,9 @@ public class SinglyLinkedList {
 
             int sum = carry + x + y;
 
-            carry = sum / 10;
+            carry = sum / 10; // Get first digit
 
-            tail.next = new ListNode(sum % 10);
+            tail.next = new ListNode(sum % 10); // Get second digit
             tail = tail.next;
 
             if (a != null) {

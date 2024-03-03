@@ -90,7 +90,6 @@ public class CircularSinglyLinkedList {
     }
 
     public ListNode removeFirst() {
-
         if (isEmpty()) {
             throw new NoSuchElementException();
         }

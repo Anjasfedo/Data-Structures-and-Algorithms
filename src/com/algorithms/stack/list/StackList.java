@@ -5,6 +5,7 @@ import java.util.EmptyStackException;
 public class StackList {
 
     private ListNode top;
+    
     private int length;
 
     private class ListNode {

@@ -26,6 +26,19 @@ public class Queue {
         return length == 0;
     }
 
+    public void enqueue(int data) {
+        ListNode newNode = new ListNode(data);
+
+        if (isEmpty()) {
+            front = newNode;
+        } else {
+            rear.next = newNode;
+        }
+
+        rear = newNode;
+        length++;
+    }
+
     public static void main(String[] args) {
 
     }

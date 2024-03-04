@@ -2,8 +2,6 @@ package com.algorithms.queue;
 
 import java.util.NoSuchElementException;
 
-import org.w3c.dom.ls.LSInput;
-
 public class Queue {
 
     private ListNode front;
@@ -51,12 +49,13 @@ public class Queue {
 
     public int dequeue() {
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            throw new NoSuchElementException("Queue is empty");
         }
 
         int result = front.data;
         front = front.next;
 
+        // Break the Queue
         if (front == null) {
             rear = null;
         }
@@ -78,6 +77,22 @@ public class Queue {
         }
         System.out.print("null");
         System.out.println();
+    }
+
+    public int first() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Queue is empty");
+        }
+        
+        return front.data;
+    }
+    
+    public int last() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Queue is empty");
+        }
+        
+        return rear.data;
     }
 
     public static void main(String[] args) {

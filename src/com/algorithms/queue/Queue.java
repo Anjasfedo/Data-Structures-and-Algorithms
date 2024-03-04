@@ -83,29 +83,50 @@ public class Queue {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
-        
+
         return front.data;
     }
-    
+
     public int last() {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
-        
+
         return rear.data;
     }
 
-    public static void main(String[] args) {
+    public static void generateBinaryNum(int num) {
         Queue queue = new Queue();
 
-        queue.enqueue(2);
-        queue.enqueue(5);
-        System.out.println(queue.dequeue());
-        queue.enqueue(11);
-        System.out.println(queue.dequeue());
-        System.out.println(queue.dequeue());
+        for (int i = 1; i < num + 1; i++) {
+            System.out.println(i);
+            int dec = i;
+            String bin = "";
+            while (dec > 0) {
+                int rem = dec % 2;
+                queue.enqueue(rem == 0 ? 0 : 1);
+                dec /= 2;
+                bin += queue.dequeue();
+            }
 
-        queue.printElements();
-        ;
+            System.out.println(bin);
+        }
+
+        // queue.printElements();
+    }
+
+    public static void main(String[] args) {
+        // Queue queue = new Queue();
+
+        // queue.enqueue(2);
+        // queue.enqueue(5);
+        // System.out.println(queue.dequeue());
+        // queue.enqueue(11);
+        // System.out.println(queue.dequeue());
+        // System.out.println(queue.dequeue());
+
+        // queue.printElements();
+
+        generateBinaryNum(5);
     }
 }

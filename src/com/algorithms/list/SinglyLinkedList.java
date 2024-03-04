@@ -374,6 +374,28 @@ public class SinglyLinkedList {
         return dummy.next;
     }
 
+    public void removeNthFromEnd(int n) {
+        ListNode countNode = head;
+        int countLength = 0;
+        while (countNode != null) {
+            countNode = countNode.next;
+            countLength++;
+        }
+
+        ListNode curNode = head;
+        
+        int countCurr = 0;
+        
+        int prevPos = countLength - 1 - n;
+        while (countCurr < prevPos) {
+            curNode = curNode.next;
+            countCurr++;
+        }
+        
+        ListNode nextNode = curNode.next;
+        curNode.next = nextNode.next;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -396,14 +418,20 @@ public class SinglyLinkedList {
         // sll.InsertFirst(2);
         // sll.InsertFirst(5);
 
-        // sll.InsertLast(1);
-        // sll.InsertLast(1);
-        // sll.InsertLast(2);
-        // sll.InsertLast(3);
-        // sll.InsertLast(5);
-        // sll.InsertLast(8);
-        // sll.InsertLast(9);
-        // sll.InsertLast(11);
+        sll.InsertLast(1);
+        sll.InsertLast(1);
+        sll.InsertLast(2);
+        sll.InsertLast(3);
+        sll.InsertLast(5);
+        sll.InsertLast(8);
+        sll.InsertLast(9);
+        sll.InsertLast(11);
+
+        sll.printElements();
+        
+        sll.removeNthFromEnd(2);
+
+        sll.printElements();
 
         // sll.InsertPosition(5, 1);
         // sll.InsertPosition(4, 2);
@@ -431,7 +459,7 @@ public class SinglyLinkedList {
 
         // sll.insertSorted(7);
 
-        // // sll.printElements();
+        // sll.printElements();
 
         // sll.deleteByKey(1);
         // sll.deleteByKey(7);
@@ -454,32 +482,32 @@ public class SinglyLinkedList {
 
         // System.out.println(sll.findNthFromEnd(4).data);
 
-        ListNode head1 = new ListNode(3);
-        ListNode second1 = new ListNode(4);
-        ListNode third1 = new ListNode(3);
+        // ListNode head1 = new ListNode(3);
+        // ListNode second1 = new ListNode(4);
+        // ListNode third1 = new ListNode(3);
         // ListNode fourth1 = new ListNode(4);
 
-        head1.next = second1;
-        second1.next = third1;
+        // head1.next = second1;
+        // second1.next = third1;
         // third1.next = fourth1;
 
-        ListNode head2 = new ListNode(5);
-        ListNode second2 = new ListNode(6);
-        ListNode third2 = new ListNode(4);
+        // ListNode head2 = new ListNode(5);
+        // ListNode second2 = new ListNode(6);
+        // ListNode third2 = new ListNode(4);
         // ListNode fourth2 = new ListNode(5);
 
-        head2.next = second2;
-        second2.next = third2;
+        // head2.next = second2;
+        // second2.next = third2;
         // third2.next = fourth2;
 
-        sll.head = head1;
-        sll.printElements();
+        // sll.head = head1;
+        // sll.printElements();
 
-        sll.head = head2;
-        sll.printElements();
+        // sll.head = head2;
+        // sll.printElements();
 
-        sll.head = sll.addTwo(head1, head2);
+        // sll.head = sll.addTwo(head1, head2);
 
-        sll.printElements();
+        // sll.printElements();
     }
 }

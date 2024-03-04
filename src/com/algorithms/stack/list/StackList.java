@@ -1,11 +1,12 @@
 package com.algorithms.stack.list;
 
 import java.util.EmptyStackException;
+import java.util.Stack;
 
 public class StackList {
 
     private ListNode top;
-    
+
     private int length;
 
     private class ListNode {
@@ -72,17 +73,44 @@ public class StackList {
         System.out.println();
     }
 
+    public boolean isPalindrome() {
+        Stack<Integer> stack = new Stack<>();
+
+        ListNode curNode = top;
+
+        while (curNode.next != null) {
+            if (curNode.data < curNode.next.data) {
+                stack.push(curNode.data);
+            } else {
+                if (stack.isEmpty()) {
+                    return false;
+                } else {
+                    int top = stack.peek();
+
+                    if (curNode.next.data == top) {
+                        stack.pop();
+                    }
+                }
+            }
+
+            curNode = curNode.next;
+        }
+
+        return stack.isEmpty();
+    }
+
     public static void main(String[] args) {
         StackList sl = new StackList();
 
-        sl.push(5);
-        sl.push(5);
         sl.push(2);
-        sl.pop();
-        sl.push(4);
-        sl.push(7);
-        sl.pop();
+        sl.push(5);
+        // sl.push(5);
+        // sl.push(2);
+        // sl.push(5);
+        // sl.push(2);
 
-        sl.printElements();
+        // sl.printElements();
+
+        System.out.println(sl.isPalindrome());
     }
 }

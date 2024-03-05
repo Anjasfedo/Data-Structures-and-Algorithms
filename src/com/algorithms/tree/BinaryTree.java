@@ -106,7 +106,39 @@ public class BinaryTree {
         inOrder(root.left);
         inOrder(root.right);
         System.out.print(root.data + " ");
-        
+    }
+
+    public void iterativePostOrder() {
+        if (root == null) {
+            return;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+
+        TreeNode curr = root;
+
+        while (!stack.isEmpty() || curr != null) {
+            if (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
+            } else {
+                TreeNode temp = stack.peek().right;
+
+                if (temp == null) {
+                    temp = stack.pop();
+
+                    System.out.print(temp.data + " ");
+
+                    while (!stack.isEmpty() && temp == stack.peek().right) {
+                        temp = stack.pop();
+                        
+                        System.out.print(temp.data + " ");
+                    }
+                } else {
+                    curr = temp;
+                }
+            }
+        }
     }
     
     public static void main(String[] args) {
@@ -125,5 +157,9 @@ public class BinaryTree {
         System.out.println();
 
         bt.PostOrder(bt.root);
+
+        System.out.println();
+
+        bt.iterativePostOrder();
     }
 }

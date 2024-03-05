@@ -97,24 +97,33 @@ public class BinaryTree {
             }
         }
     }
+
+    public void PostOrder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        
+        inOrder(root.left);
+        inOrder(root.right);
+        System.out.print(root.data + " ");
+        
+    }
     
     public static void main(String[] args) {
         BinaryTree bt = new BinaryTree();
 
         bt.createBinaryTree();
 
-        bt.preOrder(bt.root);
+        // bt.preOrder(bt.root);
+        // bt.inOrder(bt.root);
 
         System.out.println();
 
-        bt.inOrder(bt.root);
+        // bt.iterativePreOrder();
+        // bt.iterativeInOrder();
 
         System.out.println();
 
-        bt.iterativePreOrder();
-
-        System.out.println();
-
-        bt.iterativeInOrder();
+        bt.PostOrder(bt.root);
     }
 }

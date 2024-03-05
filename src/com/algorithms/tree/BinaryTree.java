@@ -1,6 +1,9 @@
 package com.algorithms.tree;
 
+import java.util.LinkedList;
 import java.util.Stack;
+
+import com.algorithms.queue.Queue;
 
 public class BinaryTree {
 
@@ -140,6 +143,31 @@ public class BinaryTree {
             }
         }
     }
+
+    public void levelOrder() {
+        if (root == null) {
+            return;
+        }
+
+        java.util.Queue<TreeNode> queue = new LinkedList<>();
+
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode temp = queue.poll();
+            
+            System.out.print(temp.data + " ");
+
+            if (temp.left != null) {
+                queue.offer(temp.left);
+            }
+            
+            if (temp.right != null) {
+                queue.offer(temp.right);
+            }
+            
+        }
+    }
     
     public static void main(String[] args) {
         BinaryTree bt = new BinaryTree();
@@ -161,5 +189,9 @@ public class BinaryTree {
         System.out.println();
 
         bt.iterativePostOrder();
+
+        System.out.println();
+
+        bt.levelOrder();
     }
 }

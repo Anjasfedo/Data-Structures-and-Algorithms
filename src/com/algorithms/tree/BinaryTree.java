@@ -5,7 +5,7 @@ import java.util.Stack;
 public class BinaryTree {
 
     private TreeNode root;
-    
+
     public class TreeNode {
         private int data;
         private TreeNode left;
@@ -48,7 +48,7 @@ public class BinaryTree {
         }
 
         Stack<TreeNode> stack = new Stack<>();
-        
+
         stack.push(root);
 
         while (!stack.isEmpty()) {
@@ -61,9 +61,20 @@ public class BinaryTree {
             }
 
             if (temp.left != null) {
-                stack.push(temp.left); 
+                stack.push(temp.left);
             }
         }
+    }
+
+    public void inOrder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        inOrder(root.left);
+        System.out.print(root.data + " ");
+        inOrder(root.right);
+
     }
 
     public static void main(String[] args) {
@@ -72,6 +83,10 @@ public class BinaryTree {
         bt.createBinaryTree();
 
         bt.preOrder(bt.root);
+
+        System.out.println();
+
+        bt.inOrder(bt.root);
 
         System.out.println();
 

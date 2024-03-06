@@ -3,8 +3,6 @@ package com.algorithms.tree;
 import java.util.LinkedList;
 import java.util.Stack;
 
-import com.algorithms.queue.Queue;
-
 public class BinaryTree {
 
     private TreeNode root;
@@ -168,6 +166,27 @@ public class BinaryTree {
             
         }
     }
+
+    public static int findMax(TreeNode root) {
+        if (root == null) {
+            return Integer.MIN_VALUE;
+        }
+
+        int result = root.data;
+
+        int left = findMax(root.left);
+        int right = findMax(root.right);
+
+        if (left > result) {
+            result = left;
+        }
+
+        if (right > result) {
+            result = right;
+        }
+
+        return result;
+    }
     
     public static void main(String[] args) {
         BinaryTree bt = new BinaryTree();
@@ -177,21 +196,23 @@ public class BinaryTree {
         // bt.preOrder(bt.root);
         // bt.inOrder(bt.root);
 
-        System.out.println();
+        // System.out.println();
 
         // bt.iterativePreOrder();
         // bt.iterativeInOrder();
 
-        System.out.println();
+        // System.out.println();
 
-        bt.PostOrder(bt.root);
+        // bt.PostOrder(bt.root);
 
-        System.out.println();
+        // System.out.println();
 
-        bt.iterativePostOrder();
+        // bt.iterativePostOrder();
 
-        System.out.println();
+        // System.out.println();
 
-        bt.levelOrder();
+        // bt.levelOrder();
+
+        System.out.println(findMax(bt.root));
     }
 }

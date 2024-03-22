@@ -1,7 +1,7 @@
 package com.algorithms.matrix;
 
 public class SortedMatrix {
-    
+
     public void search(int[][] matrix, int length, int target) {
         int i = 0;
         int j = length - 1;
@@ -23,7 +23,11 @@ public class SortedMatrix {
     }
 
     public static void main(String[] args) {
-        int[][] matrix = { { 10, 20, 30, 40 }, { 15, 25, 35, 45 }, { 27, 29, 37, 48 }, { 32, 33, 39, 51 } };
+        int[][] matrix = {
+                { 10, 20, 30, 40 },
+                { 15, 25, 35, 45 },
+                { 27, 29, 37, 48 },
+                { 32, 33, 39, 51 } };
 
         SortedMatrix sm = new SortedMatrix();
 
